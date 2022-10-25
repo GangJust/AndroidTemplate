@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.DialogActivity">
+
+    <Button
+        android:id="@+id/showMessageDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="消息弹窗" />
+
+    <Button
+        android:id="@+id/showChoiceDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="单选弹窗" />
+
+    <Button
+        android:id="@+id/showMultipleChoiceDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="多选弹窗" />
+
+    <Button
+        android:id="@+id/showLoadingPopup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="加载弹层" />
+
+    <Button
+        android:id="@+id/showBottomPopup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="底部弹层" />
+
+</LinearLayout>

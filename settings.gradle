@@ -1,3 +1,0 @@
-include ':AndroidTemplate'
-include ':app'
-rootProject.name = "TestAndroidTemplate"

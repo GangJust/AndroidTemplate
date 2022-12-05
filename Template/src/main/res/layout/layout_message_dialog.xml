@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 外层包裹 FrameLayout 内部才能够设置 Margin -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="48dp"
+        android:background="@drawable/dialog_background"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/messageDialogTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/padding_24"
+            android:paddingTop="@dimen/padding_16"
+            android:text="Title"
+            android:textColor="@color/text"
+            android:textSize="@dimen/text_14" />
+
+        <TextView
+            android:id="@+id/messageDialogContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingMultiplier="1.2"
+            android:paddingHorizontal="@dimen/padding_24"
+            android:paddingVertical="@dimen/padding_16"
+            android:text="1、This is a message.\n2、This is a message."
+            android:textColor="@color/text1"
+            android:textSize="@dimen/text_14" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/messageDialogCancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/dialog_cancel_button_background"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_horizontal"
+                android:paddingHorizontal="@dimen/padding_24"
+                android:paddingVertical="@dimen/padding_12"
+                android:text="cancel"
+                android:textAlignment="center"
+                android:textColor="@color/text"
+                android:textSize="@dimen/text_14" />
+
+            <TextView
+                android:id="@+id/messageDialogConfirm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/dialog_confirm_button_background"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_horizontal"
+                android:paddingHorizontal="@dimen/padding_24"
+                android:paddingVertical="@dimen/padding_12"
+                android:text="conform"
+                android:textAlignment="center"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/text_14" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

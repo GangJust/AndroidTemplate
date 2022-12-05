@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 外层包裹 FrameLayout 内部才能够设置 Margin -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="48dp"
+        android:background="@drawable/dialog_background"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/choiceDialogTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/padding_24"
+            android:paddingTop="@dimen/padding_16"
+            android:text="Title"
+            android:textColor="@color/text"
+            android:textSize="@dimen/text_14" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/choiceDialogList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/choiceDialogCancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dialog_single_button_background"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_horizontal"
+            android:paddingHorizontal="@dimen/padding_24"
+            android:paddingVertical="@dimen/padding_12"
+            android:text="cancel"
+            android:textAlignment="center"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/text_14" />
+    </LinearLayout>
+</FrameLayout>

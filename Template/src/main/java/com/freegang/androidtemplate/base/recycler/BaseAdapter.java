@@ -79,7 +79,7 @@ public abstract class BaseAdapter<B extends BaseItem, VH extends BaseAdapter.Vie
     /**
      * 单击事件
      *
-     * @param onItemClickListener
+     * @param onItemClickListener onItemClickListener
      */
     public void setOnItemClickListener(@NonNull OnItemClickListener<B> onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
@@ -88,36 +88,64 @@ public abstract class BaseAdapter<B extends BaseItem, VH extends BaseAdapter.Vie
     /**
      * 长按事件
      *
-     * @param onItemLongClickListener
+     * @param onItemLongClickListener onItemLongClickListener
      */
     public void setOnItemLongClickListener(@NonNull OnItemLongClickListener<B> onItemLongClickListener) {
         this.onItemLongClickListener = onItemLongClickListener;
     }
 
+    /**
+     * 单击时该方法被回调, 你可以复写该方法, 从而操作被点击项
+     *
+     * @param view view
+     * @param item item
+     */
+    protected void onItemClickNotifying(View view, B item, int position) {
+
+    }
+
+    /**
+     * 长按时该方法被回调, 你可以复写该方法, 从而操作被点击项
+     *
+     * @param view view
+     * @param item item
+     */
+    protected void onItemLongClickNotifying(View view, B item, int position) {
+
+    }
+
     private void addEventListener(@NonNull VH holder, int position) {
         //单击事件
         call(onItemClickListener, it -> holder.itemView.setOnClickListener(v -> {
+            //点击通知
+            onItemClickNotifying(v, items.get(position), position);
+
+            //点击逻辑
             if (items.size() == 1) {
-                it.onClick(this, null, items.get(position), null, position);
+                it.onClick(this, null, null, items.get(position), position);
             } else if (position == 0) {
-                it.onClick(this, null, items.get(position), items.get(position + 1), position);
+                it.onClick(this, null, items.get(position + 1), items.get(position), position);
             } else if (position == items.size() - 1) {
-                it.onClick(this, items.get(position - 1), items.get(position), null, position);
+                it.onClick(this, items.get(position - 1), null, items.get(position), position);
             } else {
-                it.onClick(this, items.get(position - 1), items.get(position), items.get(position + 1), position);
+                it.onClick(this, items.get(position - 1), items.get(position + 1), items.get(position), position);
             }
         }));
 
         //长按事件
         call(onItemLongClickListener, it -> holder.itemView.setOnLongClickListener(v -> {
+            //长按通知
+            onItemLongClickNotifying(v, items.get(position), position);
+
+            //长按逻辑
             if (items.size() == 1) {
-                return it.onLongClick(this, null, items.get(position), null, position);
+                return it.onLongClick(this, null, null, items.get(position), position);
             } else if (position == 0) {
-                return it.onLongClick(this, null, items.get(position), items.get(position + 1), position);
+                return it.onLongClick(this, null, items.get(position + 1), items.get(position), position);
             } else if (position == items.size() - 1) {
-                return it.onLongClick(this, items.get(position - 1), items.get(position), null, position);
+                return it.onLongClick(this, items.get(position - 1), null, items.get(position), position);
             } else {
-                return it.onLongClick(this, items.get(position - 1), items.get(position), items.get(position + 1), position);
+                return it.onLongClick(this, items.get(position - 1), items.get(position + 1), items.get(position), position);
             }
         }));
     }
@@ -370,7 +398,7 @@ public abstract class BaseAdapter<B extends BaseItem, VH extends BaseAdapter.Vie
 
     @Override
     public void setItemsAndRefresh(@NonNull List<B> items) {
-        this.items = (items == null) ? new ArrayList<>() : items;
+        this.items = items;
         notifyDataSetChanged();
     }
 

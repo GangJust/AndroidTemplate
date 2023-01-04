@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import com.freegang.androidtemplate.base.interfaces.TemplateCallDefault;
 
 import java.util.ArrayList;
@@ -122,13 +123,13 @@ public abstract class BaseAdapter<B extends BaseItem, VH extends BaseAdapter.Vie
 
             //点击逻辑
             if (items.size() == 1) {
-                it.onClick(this, null, null, items.get(position), position);
+                it.onClick(v, this, null, null, items.get(position), position);
             } else if (position == 0) {
-                it.onClick(this, null, items.get(position + 1), items.get(position), position);
+                it.onClick(v, this, null, items.get(position + 1), items.get(position), position);
             } else if (position == items.size() - 1) {
-                it.onClick(this, items.get(position - 1), null, items.get(position), position);
+                it.onClick(v, this, items.get(position - 1), null, items.get(position), position);
             } else {
-                it.onClick(this, items.get(position - 1), items.get(position + 1), items.get(position), position);
+                it.onClick(v, this, items.get(position - 1), items.get(position + 1), items.get(position), position);
             }
         }));
 
@@ -139,13 +140,13 @@ public abstract class BaseAdapter<B extends BaseItem, VH extends BaseAdapter.Vie
 
             //长按逻辑
             if (items.size() == 1) {
-                return it.onLongClick(this, null, null, items.get(position), position);
+                return it.onLongClick(v, this, null, null, items.get(position), position);
             } else if (position == 0) {
-                return it.onLongClick(this, null, items.get(position + 1), items.get(position), position);
+                return it.onLongClick(v, this, null, items.get(position + 1), items.get(position), position);
             } else if (position == items.size() - 1) {
-                return it.onLongClick(this, items.get(position - 1), null, items.get(position), position);
+                return it.onLongClick(v, this, items.get(position - 1), null, items.get(position), position);
             } else {
-                return it.onLongClick(this, items.get(position - 1), items.get(position + 1), items.get(position), position);
+                return it.onLongClick(v, this, items.get(position - 1), items.get(position + 1), items.get(position), position);
             }
         }));
     }

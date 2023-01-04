@@ -1,5 +1,7 @@
 package com.freegang.androidtemplate.base.recycler;
 
+import android.view.View;
+
 import androidx.annotation.NonNull;
 
 import java.util.Comparator;
@@ -314,7 +316,7 @@ public interface AdapterExpand<B extends BaseItem> {
      * @param <B>
      */
     interface OnItemClickListener<B extends BaseItem> {
-        void onClick(@NonNull AdapterExpand<B> adapter, B preItem, B nextItem, B item, int position);
+        void onClick(View view, @NonNull AdapterExpand<B> adapter, B preItem, B nextItem, @NonNull B item, int position);
     }
 
     /**
@@ -323,7 +325,7 @@ public interface AdapterExpand<B extends BaseItem> {
      * @param <B>
      */
     interface OnItemLongClickListener<B extends BaseItem> {
-        boolean onLongClick(@NonNull AdapterExpand<B> adapter, B preItem, B nextItem, B item, int position);
+        boolean onLongClick(View view, @NonNull AdapterExpand<B> adapter, B preItem, B nextItem, @NonNull B item, int position);
     }
 
     /**
